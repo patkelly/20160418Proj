@@ -8,9 +8,15 @@ namespace WorkChat.Hubs
 {
     public class ChatDashboardHub : Hub
     {
-        public void Hello()
+        public void SendMessage(string name, string message)
         {
-            Clients.All.hello();
+            
+            Clients.All.broadcastMessage(name, message);
+        }
+
+        public void SendLiveQueue(IList<string> liveQueue)
+        {
+            Clients.All.broadcastLiveQueue(liveQueue);
         }
     }
 }
